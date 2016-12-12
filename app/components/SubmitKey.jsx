@@ -1,14 +1,17 @@
 import React, { PropTypes, Component } from 'react';
 
-const SubmitKey = (props) => {
-  <button disabled={props.disabled} type="submit">Submit</button>
+export default class SubmitKey extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render () {
+    return (<button disabled={this.props.disabled} type="submit">Submit</button>);
+  }
 };
 
 SubmitKey.propTypes = {
   keyDisabled: PropTypes.bool.isRequired,
 };
-
-export default SubmitKey;
 
 // props validKey
 // button disabled opposite of {this.props.validKey}

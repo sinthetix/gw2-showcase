@@ -8,8 +8,8 @@ export default class AuthForm extends Component {
   }
   render () {
     return (
-      <form onSubmit={ props.onSubmitKey }>
-        {props.children}
+      <form onSubmit={ this.props.onSubmitKey }>
+        {this.props.children}
       </form>
     );
   }

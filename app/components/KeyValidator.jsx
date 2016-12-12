@@ -1,12 +1,11 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 
-const KeyValidator = (props) => {
-  if(props.loadingStatus == false && props.badKey == true) {
-      console.log('red x');
-  } else if (props.loadingStatus == false && props.badKey == false) {
-      console.log('green check');
-  } else {
-    console.log('loading');
+class KeyValidator extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render () {
+    return null;
   }
 };
 
@@ -17,3 +16,15 @@ KeyValidator.propTypes = {
 
 export default KeyValidator;
 // can probably be a stateless component function
+
+/*
+this needs to be jsx-ified
+if(this.props.loadingStatus == false && this.props.badKey == true) {
+    console.log('red x');
+} else if (this.props.loadingStatus == false && this.props.badKey == false) {
+    console.log('green check');
+} else {
+  console.log('loading');
+}
+
+*/
