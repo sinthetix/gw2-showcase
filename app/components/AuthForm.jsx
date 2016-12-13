@@ -1,20 +1,16 @@
 import React, { PropTypes, Component } from 'react';
 
 export default class AuthForm extends Component {
-  // doesn't work as stateless function, prolly cause top level
-  // saying props is undefined
-  constructor(props) {
-    super(props);
-  }
-  render () {
+  render() {
     return (
       <form onSubmit={ this.props.onSubmitKey }>
         {this.props.children}
       </form>
     );
   }
-};
+}
 
 AuthForm.propTypes = {
   onSubmitKey: PropTypes.func,
+  children: PropTypes.arrayOf(PropTypes.element),
 };

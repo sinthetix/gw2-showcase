@@ -1,10 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 
 export default class KeyValidator extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render () {
+  render() {
     return (
       <p>
         { this.props.badKey ? 'Bad Key!' : 'Great key!' }
@@ -12,7 +9,7 @@ export default class KeyValidator extends Component {
     );
     // ignores loadingStatus currently but good for now
   }
-};
+}
 
 KeyValidator.propTypes = {
   badKey: PropTypes.bool.isRequired,

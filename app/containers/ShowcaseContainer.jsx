@@ -1,8 +1,7 @@
-// calls all the api calls.
-// renders the component with the props from the state
-// <Account />
-// characters.map { <Character props={all the char info} />}
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
+import Account from '../components/Account';
+import CharactersContainer from '../containers/CharactersContainer';
+import { getAccountInfo, getCharacterList } from '../utils/API';
 
 export default class ShowcaseContainer extends Component {
   constructor(props) {
@@ -11,20 +10,37 @@ export default class ShowcaseContainer extends Component {
       name: '',
       created: '',
       characters: [],
-    }
+    };
   }
+
   componentDidMount() {
-    // API calls and processing goes here
+    const key = this.props.params.accountKey;
+    getAccountInfo(key)
+    .then(response => {
+      this.setState({
+        name: response.data.name,
+        created: response.data.created,
+      });
+    })
+    .catch(error => {
+      console.log('Error:', error);
+    });
+    // need to do a loading thing
   }
+
   render() {
     return (
       <div>
         <Account name={ this.state.name } created={ this.state.created } />
-        <CharactersContainer characters={ this.state.characters } />
+        <CharactersContainer
+          accountKey={ this.props.params.accountKey }
+          characters={ this.state.characters }
+        />
       </div>
     );
   }
 }
 
 ShowcaseContainer.propTypes = {
+  // params && params.accountKey
 };

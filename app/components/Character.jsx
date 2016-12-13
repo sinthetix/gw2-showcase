@@ -19,3 +19,5 @@ Character.propTypes = {
   age: PropTypes.number.isRequired,
   created: PropTypes.string.isRequired,
 };
+
+export default Character;

@@ -11,3 +11,5 @@ Account.propTypes = {
   name: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
 };
+
+export default Account;

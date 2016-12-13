@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import Router from 'react-router';
 import AuthForm from '../components/AuthForm';
 import KeyEntry from '../components/KeyEntry';
 import KeyValidator from '../components/KeyValidator';
 import SubmitKey from '../components/SubmitKey';
+import { getPermissions } from '../utils/API';
 
 export default class AuthorizationContainer extends Component {
   constructor(props, context) {
@@ -20,7 +20,7 @@ export default class AuthorizationContainer extends Component {
   }
 
   setAccountKey(event) {
-    this.setState({accountKey: event.target.value}, function () {
+    this.setState({ accountKey: event.target.value }, function () {
       this.setKeyValidity();
     });
   }
@@ -34,7 +34,7 @@ export default class AuthorizationContainer extends Component {
       // loading is false
       // if false, loading is false, back to the x
     } else {
-      this.setState({ badKey: true});
+      this.setState({ badKey: true });
       this.setState({ isLoading: false });
     }
   }
@@ -44,7 +44,7 @@ export default class AuthorizationContainer extends Component {
   }
 
   handleSubmitKey(){
-    this.context.router.push(`/$(this.state.accountKey)`);
+    this.context.router.push(`/${this.state.accountKey}`);
   }
 
   render() {
@@ -56,8 +56,8 @@ export default class AuthorizationContainer extends Component {
       </AuthForm>
     );
   }
-};
+}
 
 AuthorizationContainer.contextTypes = {
-    router: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
 };
