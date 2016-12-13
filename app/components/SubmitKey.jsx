@@ -5,7 +5,7 @@ export default class SubmitKey extends Component {
     super(props);
   }
   render () {
-    return (<button disabled={this.props.disabled} type="submit">Submit</button>);
+    return (<button disabled={this.props.keyDisabled} type="submit">Submit</button>);
   }
 };
 

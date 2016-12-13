@@ -5,10 +5,9 @@ import KeyEntry from '../components/KeyEntry';
 import KeyValidator from '../components/KeyValidator';
 import SubmitKey from '../components/SubmitKey';
 
-class AuthorizationContainer extends Component {
-  // I'm not sure what the props are here and what I'd pass to them :X
-  constructor(props) {
-    super(props);
+export default class AuthorizationContainer extends Component {
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       accountKey: '',
       badKey: true,
@@ -19,24 +18,29 @@ class AuthorizationContainer extends Component {
     this.keyLengthValid = this.keyLengthValid.bind(this);
     this.handleSubmitKey = this.handleSubmitKey.bind(this);
   }
-  // setStatusText
+
   setAccountKey(event) {
-    let text = event.target.value;
-    this.setState({ accountKey: text })
+    this.setState({accountKey: event.target.value}, function () {
+      this.setKeyValidity();
+    });
   }
 
   setKeyValidity() {
     if (this.keyLengthValid()) {
-      this.setState({ isLoading: true })
+      this.setState({ isLoading: true });
+      this.setState({ badKey: false });
       // check scopes
       // if scopes good, setState badKey to false
       // loading is false
       // if false, loading is false, back to the x
+    } else {
+      this.setState({ badKey: true});
+      this.setState({ isLoading: false });
     }
   }
 
   keyLengthValid() {
-    return this.state.setAccountKey.length == 72;
+    return this.state.accountKey.length === 72;
   }
 
   handleSubmitKey(){
@@ -46,7 +50,7 @@ class AuthorizationContainer extends Component {
   render() {
     return (
       <AuthForm onSubmitKey={ this.handleSubmitKey }>
-        <KeyEntry accountKey={ this.setAccountKey } />
+        <KeyEntry setAccountKey={ this.setAccountKey } />
         <KeyValidator badKey={ this.state.badKey } loadingStatus={ this.state.isLoading } />
         <SubmitKey keyDisabled={ this.state.badKey } />
       </AuthForm>
@@ -54,4 +58,6 @@ class AuthorizationContainer extends Component {
   }
 };
 
-export default AuthorizationContainer;
+AuthorizationContainer.contextTypes = {
+    router: PropTypes.object.isRequired,
+};

@@ -12,7 +12,7 @@ class KeyEntry extends Component {
 };
 
 KeyEntry.propTypes = {
-  setAccountKey: PropTypes.func,
+  setAccountKey: PropTypes.func.isRequired,
 }
 
 export default KeyEntry;
