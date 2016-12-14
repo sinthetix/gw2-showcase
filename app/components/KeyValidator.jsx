@@ -4,14 +4,15 @@ export default class KeyValidator extends Component {
   render() {
     return (
       <p>
-        { this.props.badKey ? 'Bad Key!' : 'Great key!' }
+        { this.props.badKey === true
+          ? <span className={ this.props.loadingAnimation }>Bad key!</span>
+          : <span>This key is dope!</span> }
       </p>
     );
-    // ignores loadingStatus currently but good for now
   }
 }
 
 KeyValidator.propTypes = {
   badKey: PropTypes.bool.isRequired,
-  loadingStatus: PropTypes.bool.isRequired,
+  loadingAnimation: PropTypes.string,
 };

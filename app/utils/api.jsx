@@ -22,3 +22,8 @@ export function getPermissions(key) {
   const url = `${GW2}/tokeninfo?access_token=${key}`;
   return axios.get(url);
 }
+
+export function getTitle(id) {
+  const url = `${GW2}/titles/${id}`;
+  return axios.get(url);
+}
