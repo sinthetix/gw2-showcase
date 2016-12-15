@@ -1,0 +1,49 @@
+.item {
+  position:relative;
+  display: inline;
+}
+
+.get-inline {
+  display: inline !important;
+  clear: none;
+  padding: 1em;
+  width: 20%;
+  height: auto;
+}
+@media (min-width: 1201px) {
+  .get-inline {
+    width: 20%;
+    height: auto;
+  }
+
+  .shiny-height {
+    height: 25em;
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .get-inline {
+    width: 25%;
+    height: auto;
+  }
+
+  .shiny-height {
+    height: 29em;
+  }
+}
+@media (min-width: 750px) and (max-width: 991px) {
+  .get-inline {
+    height: 2%;
+    width: auto;
+  }
+}
+
+@media (min-width: ) and (max-width: 749px) {
+  .get-inline {
+    max-width: 10%;
+    height: auto;
+  }
+
+  .shiny-height {
+    height: 40em;
+  }
+}

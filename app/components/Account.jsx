@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 
 const Account = (props) => {
   return props.isLoading === true
-    ? <img src='./svg/loading.svg' alt='Loading...' />
-    : <ul>
-        <li>Account: {props.name}</li>
-        <li>Created: {props.created}</li>
-       </ul>
+    ? <p>I can load faster than a Centaur<img src='./svg/loading.svg' alt='Loading...' /></p>
+    : <div className='page-header text-center'>
+        <h1>{ props.name }</h1>
+        <p className='lead'>Grinding since { props.created }!</p>
+      </div>
   }
 
 Account.propTypes = {

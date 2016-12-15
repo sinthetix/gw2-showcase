@@ -1,5 +1,3 @@
-
-
 import React, { Component, PropTypes } from 'react';
 import AuthForm from '../components/AuthForm';
 import KeyEntry from '../components/KeyEntry';
@@ -29,14 +27,11 @@ export default class AuthorizationContainer extends Component {
   }
 
   setKeyValidity() {
-    console.log('Checking key validity!')
-    const key = this.state.accountKey
+    const key = this.state.accountKey;
     if (this.keyLengthValid()) {
-      console.log('Key is valid length!')
-      this.setState({ loadingAnimation: 'animated infinite pulse' });
+      this.setState({ loadingAnimation: ' animated infinite pulse' });
       getPermissions(key)
       .then(response => {
-        console.log('Handling the response!');
         const scopes = response.data.permissions;
         this.hasRightScopes(scopes);
       })
@@ -44,18 +39,15 @@ export default class AuthorizationContainer extends Component {
         console.log('Error:', error);
       });
     } else {
-      this.setState({ badKey: true });
-      this.setState({ loadingAnimation: '' });
+      this.setState({ badKey: true, loadingAnimation: '' });
     }
   }
 
   hasRightScopes(scopes) {
-      if (scopes.includes('account','progression','build','characters')) {
+      if (scopes.includes('account','characters')) {
         this.setState({ loadingAnimation: '', badKey: false});
-        console.log('Key has right scopes!');
       } else {
         this.setState({ loadingAnimation: '' , badKey: true});
-        console.log('Scopes failed!');
       }
   }
 
@@ -70,9 +62,10 @@ export default class AuthorizationContainer extends Component {
   render() {
     return (
       <AuthForm onSubmitKey={ this.handleSubmitKey }>
-        <KeyEntry setAccountKey={ this.setAccountKey } />
         <KeyValidator badKey={ this.state.badKey } loadingAnimation={ this.state.loadingAnimation } />
-        <SubmitKey keyDisabled={ this.state.badKey } />
+        <KeyEntry setAccountKey={ this.setAccountKey }>
+          <SubmitKey keyDisabled={ this.state.badKey } />
+        </KeyEntry>
       </AuthForm>
     );
   }

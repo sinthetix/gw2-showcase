@@ -18,6 +18,16 @@ export function getCharacterInfo(key, name) {
   // need to sub spaces with %20
 }
 
+export function getItemInfo(id) {
+  const url = `${GW2}/items/${id}`;
+  return axios.get(url);
+}
+
+export function getSkinInfo(id) {
+  const url = `${GW2}/skins/${id}`;
+  return axios.get(url);
+}
+
 export function getPermissions(key) {
   const url = `${GW2}/tokeninfo?access_token=${key}`;
   return axios.get(url);

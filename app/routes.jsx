@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-
 import Main from './components/Main';
 import AuthorizationContainer from './containers/AuthorizationContainer';
 import ShowcaseContainer from './containers/ShowcaseContainer';
