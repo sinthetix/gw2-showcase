@@ -44,7 +44,7 @@ export default class AuthorizationContainer extends Component {
   }
 
   hasRightScopes(scopes) {
-      if (scopes.includes('account','characters')) {
+      if (scopes.includes('account','characters','progression','builds','unlocks')) {
         this.setState({ loadingAnimation: '', badKey: false});
       } else {
         this.setState({ loadingAnimation: '' , badKey: true});
