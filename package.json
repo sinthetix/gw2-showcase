@@ -2,10 +2,11 @@
   "name": "gw2-showcase",
   "version": "1.0.0",
   "description": "A ReactJS app to show off your fabulous GW2 characters!",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --history-api-fallback"
+    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --history-api-fallback",
+    "build": "webpack",
+    "deploy": "npm run build && surge -p build -d gw2-showcase.surge.sh"
   },
   "author": "Aly Fulton <aly@obeythelime.com>",
   "license": "MIT",

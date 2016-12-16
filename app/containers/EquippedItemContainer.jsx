@@ -46,7 +46,6 @@ export default class EquippedItemContainer extends Component {
       .catch((error) => { console.log('Error getting item: ', error); });
     } else {
       this.setState({ isLoadingItem: false });
-      console.log('USED DEFAULT');
     }
   }
 

@@ -5,10 +5,43 @@
 
 .get-inline {
   display: inline !important;
-  clear: none;
-  padding: 1em;
-  width: 20%;
-  height: auto;
+}
+
+.Junk {
+  border-color: #aaa;
+}
+
+.Basic {
+  border-color: #000;
+}
+
+.Fine {
+  border-color: #62a4da;
+}
+
+.Masterwork {
+  border-color: #1a9306;
+}
+
+.Rare {
+  border-color: #fcd00b;
+}
+
+.Exotic {
+  border-color: #ffa405;
+}
+
+.Ascended {
+  border-color: #fb3e8d;
+}
+
+.Legendary {
+  border-color: #4c139d;
+}
+
+.Junk, .Basic, .Fine, .Masterwork, .Rare, .Exotic, .Ascended, .Legendary {
+  border-style: solid;
+  border-width: .2em;
 }
 @media (min-width: 1201px) {
   .get-inline {
@@ -17,7 +50,7 @@
   }
 
   .shiny-height {
-    height: 25em;
+    height: 24em;
   }
 }
 @media (min-width: 992px) and (max-width: 1200px) {
