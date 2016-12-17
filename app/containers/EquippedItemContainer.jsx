@@ -15,8 +15,9 @@ export default class EquippedItemContainer extends Component {
     this.state = {
       isLoadingItem: true,
       name: '',
-      icon: '',
+      itemIcon: '',
       rarity: '',
+      skinIcon: null,
       skinName: null,
     };
     this.checkSkin = this.checkSkin.bind(this);
@@ -27,7 +28,7 @@ export default class EquippedItemContainer extends Component {
       this.setState({
         name: response.data.name,
         rarity: response.data.rarity,
-        icon: response.data.icon,
+        itemIcon: response.data.icon,
       })
     })
     .catch((error) => { console.log('Error getting item: ', error) });
@@ -38,7 +39,7 @@ export default class EquippedItemContainer extends Component {
       getSkinInfo(skin)
       .then((response) => {
         this.setState({
-          icon: response.data.icon,
+          skinIcon: response.data.icon,
           skinName: response.data.name,
           isLoadingItem: false,
         })
@@ -54,7 +55,7 @@ export default class EquippedItemContainer extends Component {
       <EquippedItem
         name={ this.state.name }
         rarity={ this.state.rarity }
-        icon={ this.state.icon }
+        icon={ this.state.skinIcon || this.state.itemIcon }
         skinName={ this.state.skinName }
         slot={ (this.props.item.slot).split(/(?=[A-Z])/).join(" ") }
       />
